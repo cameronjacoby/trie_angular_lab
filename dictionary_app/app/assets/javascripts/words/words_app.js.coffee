@@ -1,4 +1,6 @@
 angular.module("DictionaryApp", [
   "WordsRouter",
-  "WordsControllers"
+  "WordsControllers",
+  "WordsFactories",
+  "TrieFactory"
 ])

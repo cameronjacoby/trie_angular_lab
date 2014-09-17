@@ -2,10 +2,14 @@ WordsControllers = angular.module("WordsControllers", [])
 
 class WordsCtrl
   
-  constructor: (@scope)->
-    @greeting = "hello world!"
+  constructor: ($scope, @Word, @Trie) ->
+    @greeting = "Hello world"
+    @Word.all().success (data) ->
+      $scope.wordList = data
+    @Trie.hello()
 
-  sayHello: () ->
-    "hello again!"
+  addWord: (word) ->
+    @Word.create(word).success (data) ->
+      console.log(data)
 
-WordsControllers.controller("WordsCtrl", ["$scope", WordsCtrl])
+WordsControllers.controller("WordsCtrl", ["$scope", "Word", "Trie", WordsCtrl])
